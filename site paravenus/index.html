@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ParaVênus: ranking de empresas de tecnologia para mulheres</title><meta name="description" content="Notas, relatos e selos de mulheres que trabalham em empresas de tecnologia."><link rel="stylesheet" href="style.css"></head>
+<body><main id="main">
+<section class="hero"><div class="wrap"><div><h1>Saiba como é trabalhar em tecnologia antes de aceitar a vaga</h1><p>Notas, relatos e selos feitos por mulheres que trabalham ou já trabalharam nas empresas.</p>
+<form class="busca" role="search"><label for="q" class="vh">Buscar empresa</label><input id="q" type="search" placeholder="Nome da empresa" autocomplete="off"><button class="btn" type="submit">Buscar</button></form></div><div class="mini" id="mini" aria-hidden="true"></div></div></section>
+<div class="wrap grade"><aside aria-label="Filtros"><h2>Filtros</h2><label for="selo">Selo</label><select id="selo"><option value="">Todos</option></select><fieldset><legend>Características</legend><div id="tags"></div></fieldset></aside>
+<section aria-labelledby="rk"><h2 id="rk">Ranking da comunidade</h2><p id="n" role="status" class="dica"></p><ul id="lista" class="lista"></ul></section></div></main>
+<script src="site.js"></script>
+<script>
+const $=i=>document.getElementById(i);
+$('mini').innerHTML=D.map(e=>av(e)).join('');
+$('selo').insertAdjacentHTML('beforeend',Object.entries(T).map(([k,v])=>`<option value="${k}">${v[0]}</option>`).join(''));
+$('tags').innerHTML=Object.entries(TAGS).map(([k,v])=>`<label class="chk"><input type="checkbox" name="g" value="${k}">${v}</label>`).join('');
+const row=e=>`<li><a class="linha" href="empresa.html?id=${e.id}">${av(e)}<div><h3>${e.n}</h3><p>${e.s}, ${e.f} funcionárias</p>${e.g.map(g=>`<span class="chip">${TAGS[g]}</span>`).join('')}</div><div class="nota"><strong>${e.x}</strong>Selo ${T[e.t][0]}</div></a></li>`;
+function r(){const k=$('q').value.trim().toLowerCase(),s=$('selo').value,a=[...document.querySelectorAll('[name=g]:checked')].map(i=>i.value);
+const l=D.filter(e=>e.n.toLowerCase().includes(k)&&(!s||e.t==s)&&a.every(g=>e.g.includes(g))).sort((a,b)=>b.x-a.x);
+$('n').textContent=l.length+(l.length==1?' empresa encontrada':' empresas encontradas');
+$('lista').innerHTML=l.map(row).join('')||'<li class="vazio">Nenhuma empresa com esses filtros. Remova um filtro para ampliar a busca.</li>'}
+document.querySelector('.grade').addEventListener('input',r);$('q').addEventListener('input',r);document.querySelector('.busca').addEventListener('submit',e=>{e.preventDefault();r()});r();
+</script></body></html>

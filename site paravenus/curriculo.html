@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Criar currículo: ParaVênus</title><link rel="stylesheet" href="style.css"></head>
+<body><main id="main" class="wrap" style="padding-top:40px"><div class="noprint"><h1>Monte seu currículo</h1><p>Preencha os campos e acompanhe o resultado ao lado. O arquivo sai em formato simples, que os sistemas de triagem (ATS) conseguem ler.</p></div>
+<div class="cvg"><form id="fm" class="noprint" oninput="up()" onsubmit="return false">
+<label for="nome">Nome completo</label><input id="nome" autocomplete="name"><label for="cargo">Cargo desejado</label><input id="cargo">
+<label for="email">E-mail</label><input id="email" type="email" autocomplete="email"><label for="tel">Telefone</label><input id="tel" type="tel" autocomplete="tel">
+<label for="resumo">Resumo profissional</label><textarea id="resumo" rows="3"></textarea><label for="exp">Experiência</label><textarea id="exp" rows="5" aria-describedby="d"></textarea><p id="d" class="dica">Uma experiência por linha.</p>
+<label for="edu">Formação</label><textarea id="edu" rows="2"></textarea><label for="hab">Habilidades</label><input id="hab" placeholder="Separe por vírgula">
+<label for="tpl">Visual</label><select id="tpl"><option value="moderno">Moderno, com destaques em laranja</option><option value="classico">Clássico, preto e branco</option></select>
+<div class="acoes"><button class="btn" id="bd" type="button">Baixar em Word (.docx)</button><button class="btn sec" type="button" onclick="print()">Salvar em PDF</button></div><p id="st" class="dica" role="status"></p></form>
+<div><div class="cv moderno" id="cv" aria-label="Pré-visualização do currículo"><h3 id="pnome"></h3><p id="pcargo"></p><p id="pcontato"></p><h4>Resumo</h4><p id="presumo"></p><h4>Experiência</h4><p id="pexp"></p><h4>Formação</h4><p id="pedu"></p><h4>Habilidades</h4><div id="phab"></div></div></div></div></main>
+<script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
+<script src="site.js"></script>
+<script>
+const $=i=>document.getElementById(i),v=i=>$(i).value.trim();
+function up(){$('pnome').textContent=v('nome')||'Seu nome';$('pcargo').textContent=v('cargo')||'Cargo desejado';$('pcontato').textContent=[v('email'),v('tel')].filter(Boolean).join('  |  ');
+['resumo','exp','edu'].forEach(i=>$('p'+i).textContent=v(i));
+$('phab').replaceChildren(...v('hab').split(',').filter(s=>s.trim()).map(s=>Object.assign(document.createElement('span'),{className:'chip',textContent:s.trim()})));$('cv').className='cv '+$('tpl').value}
+$('bd').onclick=()=>{if(!window.docx){$('st').textContent='Não foi possível carregar o gerador de Word. Verifique a conexão ou use Salvar em PDF.';return}
+const{Document,Packer,Paragraph,HeadingLevel}=docx,H=t=>new Paragraph({text:t,heading:HeadingLevel.HEADING_2,spacing:{before:240}}),L=t=>t.split('\n').filter(Boolean).map(x=>new Paragraph(x));
+const d=new Document({sections:[{children:[new Paragraph({text:v('nome')||'Nome',heading:HeadingLevel.TITLE}),new Paragraph(v('cargo')),new Paragraph([v('email'),v('tel')].filter(Boolean).join(' | ')),H('Resumo'),...L(v('resumo')),H('Experiência'),...L(v('exp')),H('Formação'),...L(v('edu')),H('Habilidades'),new Paragraph(v('hab'))]}]});
+Packer.toBlob(d).then(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='curriculo.docx';a.click();$('st').textContent='Arquivo curriculo.docx gerado.'})};
+up();
+</script></body></html>

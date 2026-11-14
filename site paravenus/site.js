@@ -1,0 +1,18 @@
+/* Dados de demonstração + cabeçalho/rodapé únicos para todas as páginas */
+const T={d:['Diamante','D','#1f78b4'],o:['Ouro','O','#a87400'],p:['Prata','P','#6b7285'],b:['Bronze','B','#96532a'],a:['Alerta','!','#b3261e']};
+const TAGS={remoto:'100% remoto',maes:'Mães na liderança',mulheres:'+50% mulheres',licenca:'Licença parental igualitária',denuncia:'Canal de denúncia',equidade:'Equidade salarial'};
+const D=[
+{id:'vt',n:'Vênus Tech',s:'Software B2B',f:340,x:9.8,t:'d',g:['mulheres','maes','licenca','denuncia','equidade','remoto'],c:'Desenvolvedora front-end sênior',r:'Entrei júnior e em dois anos liderava um squad. A cultura de feedback é real e a licença parental vale para todo mundo.',ok:1,v:['Engenheira de software pleno','Analista de dados júnior','Product designer']},
+{id:'nc',n:'Nimbus Cloud',s:'Infraestrutura cloud',f:890,x:8.6,t:'o',g:['equidade','denuncia','remoto'],c:'Engenheira DevOps',r:'Salário justo e promoção clara. O ponto fraco é que a diretoria ainda é majoritariamente masculina.',ok:1,v:['SRE pleno','Analista de segurança']},
+{id:'bf',n:'ByteForge Labs',s:'Consultoria de TI',f:210,x:6.9,t:'p',g:['denuncia','remoto'],c:'Analista de sistemas',r:'O RH escuta, mas as decisões técnicas importantes acontecem num grupo onde nunca me chamaram.',ok:0,v:['Desenvolvedora Java pleno']},
+{id:'ch',n:'CodeHive',s:'Startup fintech',f:95,x:6.1,t:'p',g:['mulheres'],c:'Desenvolvedora back-end',r:'Time bacana no dia a dia, mas não existe processo formal para denúncia.',ok:0,v:['Dev back-end júnior','QA']},
+{id:'qd',n:'Quantum Dynamics',s:'Hardware e IoT',f:430,x:4.2,t:'b',g:[],c:'Engenheira de firmware',r:'Clima pesado em reuniões técnicas e interrupções constantes. Fui ignorada em promoções.',ok:1,v:[]},
+{id:'nx',n:'NexTech Solutions',s:'Sistemas legados',f:260,x:1.8,t:'a',g:[],c:'Analista de suporte',r:'Denunciei ao RH e o processo não andou. Pedi desligamento três meses depois.',ok:0,v:[]}];
+const ini=n=>n.split(' ').map(p=>p[0]).join('').slice(0,2);
+/* Para usar foto real: troque o <span class="foto"> por <span class="foto"><img src="logo.png" alt=""></span> */
+const av=(e,g)=>`<span class="av${g?' g':''}" style="--c:${T[e.t][2]}"><span class="foto">${ini(e.n)}</span><b class="sel" aria-hidden="true">${T[e.t][1]}</b></span>`;
+document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">');
+const NAV=[['index.html','Ranking'],['curriculo.html','Currículo'],['sobre.html','Sobre']];
+const cur=location.pathname.split('/').pop()||'index.html';
+document.body.insertAdjacentHTML('afterbegin',`<a class="skip" href="#main">Ir para o conteúdo</a><header class="top"><div class="wrap bar"><a class="logo" href="index.html">Para<b>Vênus</b></a><nav aria-label="Principal">${NAV.map(([h,t])=>`<a href="${h}"${h==cur?' aria-current="page"':''}>${t}</a>`).join('')}</nav><a class="btn" href="avaliar.html">Avaliar empresa</a></div></header>`);
+document.body.insertAdjacentHTML('beforeend',`<footer><div class="wrap fcols"><div><a class="logo" href="index.html">Para<b>Vênus</b></a><p>Plataforma feita por e para mulheres da tecnologia. Empresas e relatos deste modelo são fictícios.</p></div><div><h2>Plataforma</h2><a href="index.html">Ranking de empresas</a><a href="avaliar.html">Avaliar empresa</a><a href="curriculo.html">Criar currículo</a></div><div><h2>Institucional</h2><a href="sobre.html">Sobre o ParaVênus</a><a href="sobre.html#moderacao">Regras de moderação</a><a href="sobre.html#selos">Critérios dos selos</a></div></div></footer><a class="jogo" href="jogo.html">Treine no jogo ParaVênus</a>`);

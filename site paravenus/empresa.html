@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Empresa: ParaVênus</title><link rel="stylesheet" href="style.css"></head>
+<body><main id="main"></main>
+<script src="site.js"></script>
+<script>
+const e=D.find(x=>x.id==new URLSearchParams(location.search).get('id'))||D[0];document.title=e.n+': ParaVênus';
+const cl=v=>Math.max(0,Math.min(10,v)),bar=(l,v)=>`<div class="barra"><span>${l}</span><i style="--w:${v*10}%"></i><b>${v.toFixed(1)}</b></div>`;
+const cat=[['Cultura e respeito',.2],['Salário e benefícios',-.3],['Liderança feminina',e.g.includes('maes')?.3:-.8],['Segurança e denúncias',e.g.includes('denuncia')?.1:-1.2],['Plano de carreira',-.1]];
+const hist=[2023,2024,2025,2026].map((a,i)=>bar(a,cl(e.x-(3-i)*.3*(e.x>5?1:-1))));
+document.getElementById('main').innerHTML=`<div class="cab"><div class="wrap cab-in">${av(e,1)}<div><h1>${e.n}</h1><p>${e.s}, ${e.f} funcionárias</p><span class="chip">Selo ${T[e.t][0]}</span></div><div class="nota grande"><strong>${e.x}</strong>de 10</div></div>
+<nav class="wrap abas" aria-label="Seções da empresa"><a href="#notas">Notas</a><a href="#relatos">Relatos</a><a href="#vagas">Vagas (${e.v.length})</a><a href="#cultura">Cultura e benefícios</a></nav></div>
+<div class="wrap pag"><section id="notas" class="painel"><h2>Notas por tema</h2>${cat.map(([l,d])=>bar(l,cl(e.x+d))).join('')}<h3 style="margin-top:28px">Histórico da nota geral</h3>${hist.join('')}</section>
+<section id="relatos" class="painel"><h2>Relatos</h2><article class="relato"><header><strong>${e.c}</strong>${e.ok?'<span class="ver">Relato verificado</span>':''}</header><p>${e.r}</p></article><a class="btn sec" href="avaliar.html?id=${e.id}">Escrever um relato</a></section>
+<section id="vagas" class="painel"><h2>Vagas abertas</h2>${e.v.length?'<ul class="vagas">'+e.v.map(v=>`<li><span>${v}</span><a class="btn sec" href="curriculo.html">Enviar currículo</a></li>`).join('')+'</ul>':'<p>Nenhuma vaga aberta no momento.</p>'}</section>
+<section id="cultura" class="painel"><h2>Cultura e benefícios</h2>${e.g.length?e.g.map(g=>`<span class="chip">${TAGS[g]}</span>`).join(''):'<p>Esta empresa ainda não declarou práticas de inclusão.</p>'}</section></div>`;
+</script></body></html>

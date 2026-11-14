@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Avaliar empresa: ParaVênus</title><link rel="stylesheet" href="style.css"></head>
+<body><main id="main" class="wrap estreito" style="padding-block:40px"><h1>Avalie uma empresa</h1>
+<p>Seu relato ajuda outras mulheres a escolher onde trabalhar. Ele passa por moderação e a empresa não pode removê-lo. Veja as <a href="sobre.html#moderacao">regras de moderação</a>.</p>
+<form id="f" class="painel"><label for="emp">Empresa</label><select id="emp" required></select>
+<label for="cargo">Seu cargo</label><input id="cargo" required>
+<label for="nota">Nota geral, de 0 a 10</label><input id="nota" type="number" min="0" max="10" step="0.5" required>
+<label for="rel">Seu relato</label><textarea id="rel" rows="6" minlength="40" required aria-describedby="d1"></textarea><p id="d1" class="dica">Conte o que viveu, sem citar nomes de pessoas. Mínimo de 40 caracteres.</p>
+<label class="chk" style="margin-top:16px"><input type="checkbox" id="vc">Quero verificar meu relato com e-mail corporativo</label>
+<div id="vbox" hidden><label for="mail">E-mail corporativo</label><input id="mail" type="email" aria-describedby="d2"><p id="d2" class="dica">Usamos o e-mail só para confirmar o vínculo. Ele não aparece em lugar nenhum do site.</p></div>
+<p><button class="btn" type="submit" style="margin-top:20px">Enviar relato</button></p></form>
+<p id="ok" class="ok" role="status" hidden>Relato recebido. Ele entra no ar depois da moderação, sem o seu nome.</p></main>
+<script src="site.js"></script>
+<script>
+const $=i=>document.getElementById(i);
+$('emp').innerHTML='<option value="">Selecione</option>'+D.map(e=>`<option value="${e.id}">${e.n}</option>`).join('');
+$('emp').value=new URLSearchParams(location.search).get('id')||'';
+$('vc').onchange=()=>{$('vbox').hidden=!$('vc').checked;$('mail').required=$('vc').checked};
+$('f').onsubmit=ev=>{ev.preventDefault();/* aqui entra o envio ao servidor (PHP + MySQL) */$('f').reset();$('vbox').hidden=true;$('ok').hidden=false;$('ok').focus()};
+</script></body></html>

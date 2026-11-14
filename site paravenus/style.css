@@ -1,0 +1,70 @@
+:root{--roxo:#2d1458;--roxo2:#4a2290;--lar:#f26a1b;--link:#b8450a;--bege:#f6efe4;--bege2:#e6d9c3;--tinta:#241238;--mudo:#5b4a6e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 Figtree,system-ui,sans-serif;color:var(--tinta);background:var(--bege)}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,sans-serif;line-height:1.15;margin:0 0 .6em;color:var(--roxo)}
+h1{font-size:clamp(2rem,4.5vw,3rem)}h2{font-size:1.6rem}h3{font-size:1.15rem}
+a{color:var(--link)}.wrap{max-width:1120px;margin:0 auto;padding:0 20px}.estreito{max-width:720px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:99}
+:focus-visible{outline:3px solid var(--lar);outline-offset:2px}
+/* cabeçalho (único, injetado por site.js) */
+.top{background:var(--roxo);position:sticky;top:0;z-index:20}
+.bar{display:flex;align-items:center;gap:32px;height:64px}
+.logo{color:#fff;font:800 1.35rem "Bricolage Grotesque",sans-serif;text-decoration:none;white-space:nowrap}.logo b{color:var(--lar)}
+.top nav{display:flex;gap:4px;margin-right:auto}
+.top nav a{color:#e9defa;text-decoration:none;padding:8px 14px;border-radius:6px;white-space:nowrap}
+.top nav a:hover,.top nav a[aria-current]{background:rgba(255,255,255,.14);color:#fff}
+.btn{display:inline-block;background:var(--lar);color:var(--tinta);font:700 1rem Figtree,sans-serif;padding:10px 18px;border:2px solid var(--lar);border-radius:8px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#ff8238}.btn.sec{background:transparent;border-color:var(--roxo);color:var(--roxo)}.btn.sec:hover{background:var(--roxo);color:#fff}
+/* início */
+.hero{background:var(--roxo);color:#fff;padding:56px 0}.hero .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.hero h1{color:#fff;max-width:20ch}.hero p{max-width:56ch;color:#e9defa;font-size:1.1rem}
+.busca{display:flex;gap:8px;max-width:560px;margin-top:24px}.mini{display:grid;grid-template-columns:repeat(3,72px);gap:24px}
+.grade{display:grid;grid-template-columns:250px 1fr;gap:32px;padding-block:32px}aside{position:sticky;top:84px;align-self:start}
+fieldset{border:0;padding:0;margin:20px 0 0}legend{font-weight:700;padding:0;margin-bottom:6px}
+label{display:block;font-weight:600;margin:16px 0 4px}label.chk{display:flex;gap:8px;align-items:center;font-weight:500;margin:6px 0}
+input,select,textarea{width:100%;font:inherit;color:var(--tinta);padding:10px 12px;border:1.5px solid #8a7b9c;border-radius:8px;background:#fff}input[type=checkbox]{width:auto}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.linha{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;background:#fff;border:1px solid var(--bege2);border-radius:12px;padding:18px 20px;text-decoration:none;color:inherit}
+.linha:hover{border-color:var(--roxo2)}.linha h3{margin:0 0 2px}.linha p{margin:0;color:var(--mudo)}
+.nota{text-align:right;color:var(--mudo)}.nota strong{display:block;font:800 2rem "Bricolage Grotesque",sans-serif;color:var(--roxo);line-height:1}
+.chip{display:inline-block;border:1px solid var(--bege2);background:var(--bege);border-radius:99px;padding:1px 10px;font-size:.82rem;margin:6px 6px 0 0;color:var(--tinta)}
+.vazio{padding:24px;background:#fff;border-radius:12px}
+/* avatar redondo com selo temático */
+.av{--c:#4a2290;position:relative;display:inline-block;width:72px;height:72px;flex:none}
+.av .foto{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:var(--bege);border:4px solid var(--c);font:800 1.25rem "Bricolage Grotesque",sans-serif;color:var(--roxo);overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.av .sel{position:absolute;right:-4px;bottom:-4px;width:26px;height:26px;border-radius:50%;background:var(--c);color:#fff;border:2px solid #fff;font:800 .8rem sans-serif;display:grid;place-items:center}
+.av.g{width:112px;height:112px}.av.g .foto{font-size:2rem;border-width:6px}.av.g .sel{width:38px;height:38px;font-size:1.1rem;border-width:3px}
+/* empresa */
+.cab{background:#fff;border-bottom:1px solid var(--bege2);padding-top:28px}.cab-in{display:flex;gap:24px;align-items:center}.cab-in>div:nth-child(2){flex:1}
+.cab h1{margin:0}.cab p{margin:2px 0;color:var(--mudo)}.nota.grande strong{font-size:3.2rem}
+.abas{display:flex;gap:4px;margin-top:20px;overflow-x:auto}.abas a{padding:12px 16px;color:var(--tinta);font-weight:600;text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent}.abas a:hover{border-color:var(--lar)}
+.pag{max-width:860px;padding-block:28px}.pag section{scroll-margin-top:84px}
+.painel{background:#fff;border:1px solid var(--bege2);border-radius:12px;padding:24px;margin-bottom:20px}
+.barra{display:grid;grid-template-columns:150px 1fr 36px;gap:12px;align-items:center;margin:10px 0}
+.barra i{height:10px;border-radius:5px;background:var(--bege2);position:relative;overflow:hidden}
+.barra i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--lar);animation:g .9s ease-out}@keyframes g{from{width:0}}
+.relato header{display:flex;gap:12px;align-items:center;margin-bottom:6px}.ver{background:#e3f3e8;color:#14532d;border-radius:99px;padding:2px 10px;font-size:.82rem;font-weight:600}
+.vagas{list-style:none;margin:0;padding:0}.vagas li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--bege2)}
+/* formulários e currículo */
+.dica{color:var(--mudo);font-size:.9rem;margin:4px 0 0}.ok{background:#e3f3e8;border-radius:12px;padding:16px 20px}
+.cvg{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding-block:32px}.acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.cv{background:#fff;border:1px solid var(--bege2);padding:32px;min-height:520px}.cv p{white-space:pre-line;margin:.2em 0 .8em}.cv h4{margin:1.2em 0 .4em;font-size:1rem}
+.cv.moderno h3{color:var(--roxo)}.cv.moderno h4{color:var(--link);border-bottom:2px solid var(--lar)}
+.cv.classico{font-family:Georgia,serif}.cv.classico h3,.cv.classico h4{color:#000;font-family:Georgia,serif}.cv.classico h4{border-bottom:1px solid #000}
+/* sobre */
+.sobre{display:grid;grid-template-columns:220px 1fr;gap:48px;padding-block:40px}.toc{position:sticky;top:84px;align-self:start;display:grid;gap:2px}
+.toc a{padding:8px 12px;border-left:3px solid var(--bege2);color:var(--tinta);text-decoration:none}.toc a:hover{border-color:var(--lar)}
+.leitura section{margin-bottom:44px;scroll-margin-top:84px}.leitura p,.leitura li{max-width:68ch}.leitura li{margin-bottom:.5em}
+table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--bege2)}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--bege2);vertical-align:top}
+.pessoas{list-style:none;padding:0;display:flex;gap:32px}.pessoas li{display:grid;justify-items:start;gap:6px}
+/* rodapé e botão do jogo (únicos, injetados por site.js) */
+footer{background:var(--roxo);color:#d9cdef;margin-top:48px;padding:40px 0}.fcols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer h2{font-size:1rem;color:#fff}footer a:not(.logo){display:block;color:#fff;margin:6px 0}
+.jogo{position:fixed;right:20px;bottom:20px;z-index:30;background:var(--roxo2);color:#fff;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:99px;border:3px solid var(--lar)}.jogo:hover{background:var(--roxo)}
+@media(max-width:800px){.grade,.cvg,.sobre,.fcols,.hero .wrap{grid-template-columns:1fr}.mini{display:none}aside,.toc{position:static}
+.bar{flex-wrap:wrap;height:auto;padding-block:10px;gap:8px 16px}.top nav{order:3;width:100%;overflow-x:auto}
+.linha{grid-template-columns:auto 1fr}.linha .nota{grid-column:1/-1;text-align:left}.cab-in{flex-wrap:wrap}.barra{grid-template-columns:110px 1fr 32px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+@media print{.top,footer,.jogo,.skip,.noprint{display:none!important}.cvg{display:block;padding:0}.cv{border:0;padding:0}body{background:#fff}}
